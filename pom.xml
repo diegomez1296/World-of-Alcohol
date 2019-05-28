@@ -55,7 +55,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <<dependencies>
+    <dependencies>
     <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-spring-boot-starter</artifactId>
