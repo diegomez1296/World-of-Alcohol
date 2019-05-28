@@ -102,28 +102,28 @@
             </properties>
 
 
-            <dependencies>
-                <dependency>
-                    <groupId>com.vaadin</groupId>
-                    <artifactId>flow-server-production-mode</artifactId>
-                </dependency>
-            </dependencies>
+            <!--<dependencies>-->
+                <!--<dependency>-->
+                    <!--<groupId>com.vaadin</groupId>-->
+                    <!--<artifactId>flow-server-production-mode</artifactId>-->
+                <!--</dependency>-->
+            <!--</dependencies>-->
 
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>com.vaadin</groupId>
-                        <artifactId>vaadin-maven-plugin</artifactId>
-                        <version>${vaadin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>copy-production-files</goal>
-                                    <goal>package-for-production</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>com.vaadin</groupId>-->
+                        <!--<artifactId>vaadin-maven-plugin</artifactId>-->
+                        <!--<version>${vaadin.version}</version>-->
+                        <!--<executions>-->
+                            <!--<execution>-->
+                                <!--<goals>-->
+                                    <!--<goal>copy-production-files</goal>-->
+                                    <!--<goal>package-for-production</goal>-->
+                                <!--</goals>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
