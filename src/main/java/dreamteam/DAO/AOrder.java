@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Order {
+public class AOrder {
 
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class Order {
     private int quantity;
     private Boolean isDone;
 
-    public Order(Long user_id, Long alcohol_id, int quantity, Boolean isDone) {
+    public AOrder(Long user_id, Long alcohol_id, int quantity, Boolean isDone) {
         this.user_id = user_id;
         this.alcohol_id = alcohol_id;
         this.quantity = quantity;

@@ -94,3 +94,43 @@ drop table order if exists [42001-199]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
 Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
 create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
+2019-05-29 22:05:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ORDER[*] IF EXISTS "; oczekiwano "identifier"
+Syntax error in SQL statement "DROP TABLE ORDER[*] IF EXISTS "; expected "identifier"; SQL statement:
+drop table order if exists [42001-199]
+2019-05-29 22:05:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
+Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
+create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
+2019-05-29 22:06:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ORDER[*] IF EXISTS "; oczekiwano "identifier"
+Syntax error in SQL statement "DROP TABLE ORDER[*] IF EXISTS "; expected "identifier"; SQL statement:
+drop table order if exists [42001-199]
+2019-05-29 22:06:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
+Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
+create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
+2019-05-29 22:10:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ORDER[*] IF EXISTS "; oczekiwano "identifier"
+Syntax error in SQL statement "DROP TABLE ORDER[*] IF EXISTS "; expected "identifier"; SQL statement:
+drop table order if exists [42001-199]
+2019-05-29 22:10:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
+Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
+create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
+2019-05-29 22:14:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ORDER[*] IF EXISTS "; oczekiwano "identifier"
+Syntax error in SQL statement "DROP TABLE ORDER[*] IF EXISTS "; expected "identifier"; SQL statement:
+drop table order if exists [42001-199]
+2019-05-29 22:14:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
+Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
+create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
+2019-05-29 22:15:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "DROP TABLE ORDER[*] IF EXISTS "; oczekiwano "identifier"
+Syntax error in SQL statement "DROP TABLE ORDER[*] IF EXISTS "; expected "identifier"; SQL statement:
+drop table order if exists [42001-199]
+2019-05-29 22:15:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; oczekiwano "identifier"
+Syntax error in SQL statement "CREATE TABLE ORDER[*] (ID BIGINT NOT NULL, ALCOHOL_ID BIGINT, IS_DONE BOOLEAN, QUANTITY INTEGER NOT NULL, USER_ID BIGINT, PRIMARY KEY (ID)) "; expected "identifier"; SQL statement:
+create table order (id bigint not null, alcohol_id bigint, is_done boolean, quantity integer not null, user_id bigint, primary key (id)) [42001-199]
