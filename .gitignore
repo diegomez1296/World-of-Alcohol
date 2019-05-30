@@ -111,6 +111,7 @@ hs_err_pid*
 
 ### Java-Web ###
 ## ignoring target file
+
 target/
 
 ### Vaadin ###
@@ -118,3 +119,8 @@ target/
 .designer
 
 # End of https://www.gitignore.io/api/java,vaadin,intellij,java-web
+
+
+*.db
+*.iml
+.idea/*.xml

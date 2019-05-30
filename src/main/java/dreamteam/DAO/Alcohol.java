@@ -20,12 +20,17 @@ public class Alcohol {
 
     private String name;
     private int quantity;
-    private float price;
+    private double price;
     private String description;
     private String picture;
     private Boolean isAvailable;
 
-    @ManyToMany(mappedBy = "alcohols")
+    @ManyToMany
+    @JoinTable(
+            name = "Favourite",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "alcohol_id") }
+    )
     private List<User> users;
 
     public Alcohol(String name, int quantity, float price, String description, String picture, Boolean isAvailable) {

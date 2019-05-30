@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/test1").permitAll()
+                .antMatchers("/api/test1").permitAll()
                 .antMatchers("/api/test2").hasRole("ADMIN")
                 .antMatchers("/api/test3").hasAnyRole("USER","ADMIN")
                 .and()

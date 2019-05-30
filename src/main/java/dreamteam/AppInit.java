@@ -10,6 +10,7 @@ import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,54 +25,56 @@ public class AppInit {
     private AlcoholRepo alcoholRepo;
     private OrderRepo orderRepo;
 
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
-    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, OrderRepo orderRepo) {
+    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, OrderRepo orderRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.roleRepo = roleRepo;
         this.alcoholRepo = alcoholRepo;
         this.orderRepo = orderRepo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
-        Role admin = new Role("ROLE_ADMIN");
-        Role user = new Role("ROLE_USER");
+        Role adminRole = new Role("ROLE_ADMIN");
+        Role userRole = new Role("ROLE_USER");
 
-        User user1 = new User("user1","user1");
-        User user2 = new User("admin", "admin");
+        User admin = new User("admin", passwordEncoder.encode("admin"));
+        User user = new User("user", passwordEncoder.encode("user"));
 
-        Alcohol zolte = new Alcohol("Żółte najlepsze", 666, 999.9f, "Najlepsze, bo żółte", "www.xxx.com", true);
+        Alcohol zolte = new Alcohol("Żółte najlepsze", 666, 999.90f, "Najlepsze, bo żółte", "www.xxx.com", true);
         Alcohol malibu = new Alcohol("Malibu kokosowe", 100, 49.99f,"Kokosowe z prądem", "www.malibu.com", true);
 
-        user1.setRoles(Collections.singletonList(user));
-        user2.setRoles(Collections.singletonList(admin));
+        user.setRoles(Collections.singletonList(userRole));
+        admin.setRoles(Collections.singletonList(adminRole));
 
-        user.setUsers(Collections.singletonList(user1));
-        admin.setUsers(Collections.singletonList(user2));
+        userRole.setUsers(Collections.singletonList(user));
+        adminRole.setUsers(Collections.singletonList(admin));
 
         List<User> users = new ArrayList<>();
-        users.add(user1);
-        users.add(user2);
+        users.add(user);
+        users.add(admin);
 
         List<Alcohol> alcohols = new ArrayList<>();
         alcohols.add(zolte);
         alcohols.add(malibu);
 
-//        user1.setAlcohols(alcohols);
-//        user2.setAlcohols(Collections.singletonList(zolte));
-//
-//        zolte.setUsers(users);
-//        malibu.setUsers(Collections.singletonList(user1));
 
-        userRepo.save(user1);
-        userRepo.save(user2);
+        zolte.setUsers(users);
+        malibu.setUsers(Collections.singletonList(admin));
+        user.setFavourites(alcohols);
+        admin.setFavourites(Collections.singletonList(zolte));
 
-        roleRepo.save(user);
-        roleRepo.save(admin);
+        userRepo.save(user);
+        userRepo.save(admin);
 
         alcoholRepo.save(zolte);
         alcoholRepo.save(malibu);
 
+        roleRepo.save(userRole);
+        roleRepo.save(adminRole);
 
     }
 }

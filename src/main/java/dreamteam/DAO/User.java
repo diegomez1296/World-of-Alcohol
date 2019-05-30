@@ -19,7 +19,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     private String username;
     private String password;
@@ -28,13 +28,9 @@ public class User implements UserDetails {
     private List<Role> roles;
 
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "Favourite",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "alcohol_id") }
-    )
-    private List<Alcohol> alcohols;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Alcohol> favourites;
 
 
 
