@@ -9,6 +9,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
+import dreamteam.DAO.Alcohol;
+import dreamteam.DAO.Role;
+import dreamteam.DAO.TypeOfRole;
 import dreamteam.DAO.User;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.RoleRepo;
@@ -16,7 +19,11 @@ import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Route("Registration")
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@Route("register")
 public class RegistrationGUI extends VerticalLayout {
 
     private UserRepo userRepo;
@@ -26,8 +33,8 @@ public class RegistrationGUI extends VerticalLayout {
 
     private Text textUserRegistration;
     private TextField textFieldUserName;
-    private PasswordField PasswordFieldPassword;
-    private PasswordField PasswordFieldConfirmPassword;
+    private PasswordField passwordFieldPassword;
+    private PasswordField passwordFieldConfirmPassword;
     private Button buttonCreateUser;
 
     @Autowired
@@ -39,7 +46,7 @@ public class RegistrationGUI extends VerticalLayout {
 
         setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         setSizeFull();
-        addClassName("main-gui");
+        //addClassName("main-gui");
 
         initComponents();
     }
@@ -47,44 +54,50 @@ public class RegistrationGUI extends VerticalLayout {
     private void initComponents() {
         textUserRegistration = new Text("User Registration");
         textFieldUserName = new TextField("Name");
-        PasswordFieldPassword = new PasswordField("Password");
-        PasswordFieldConfirmPassword = new PasswordField("Confirm Password");
+        passwordFieldPassword = new PasswordField("Password");
+        passwordFieldConfirmPassword = new PasswordField("Confirm Password");
         buttonCreateUser = new Button("Create");
 
+
+
         // Filtering the correct registration - to fix
-        buttonCreateUser.addClickListener(buttonClickEvent -> {
-            if (emptyCheck(textFieldUserName) || emptyCheck(PasswordFieldPassword) || emptyCheck(PasswordFieldConfirmPassword)) {
-                if (emptyCheck(PasswordFieldPassword) || emptyCheck(PasswordFieldConfirmPassword) && PasswordFieldPassword.getValue().equals(PasswordFieldConfirmPassword.getValue())) {
-
-                    //userRepo.save(new User(textFieldUserName.getValue(), passwordEncoder.encode(PasswordFieldPassword.getValue())));
-
-                    // Add User Role
-
-                    // Add User empty Alcohol List
-
-                    Notification.show("Poprawne dane logowania", 1000, Notification.Position.TOP_CENTER);
-
-                    //buttonCreateUser.getUI().ifPresent(ui -> ui.navigate("NextView"));
-                } else {
-                    Notification.show("Podane hasła nie są takie same", 1000, Notification.Position.TOP_CENTER);
-                }
-            } else {
-                Notification.show("Jedno z pól jest puste",1000, Notification.Position.TOP_CENTER);
-            }
-        });
+        buttonCreateUser.addClickListener(buttonClickEvent -> createNewUser());
 
         this.add(textUserRegistration);
         this.add(textFieldUserName);
-        this.add(PasswordFieldPassword);
-        this.add(PasswordFieldConfirmPassword);
+        this.add(passwordFieldPassword);
+        this.add(passwordFieldConfirmPassword);
         this.add(buttonCreateUser);
     }
 
-    private boolean emptyCheck(Component component){
-        //if (component.getElement().getText().length() > 0){
-        if (component.toString().length() > 0){
-            return true;
+    private void createNewUser() {
+        boolean isOk = true;
+
+        if(!(textFieldUserName.getValue().length() >0)) isOk = false;
+        if(!(passwordFieldPassword.getValue().length() >0)) isOk = false;
+        if(!(passwordFieldConfirmPassword.getValue().length() >0)) isOk = false;
+
+        if(!isOk) Notification.show("Fields cannot be empty",3000, Notification.Position.TOP_CENTER);
+
+        if(!(passwordFieldPassword.getValue().equals(passwordFieldConfirmPassword.getValue()))) {
+            isOk = false;
+            Notification.show("Passwords must be the same", 3000, Notification.Position.TOP_CENTER);
         }
-        return false;
+
+        if(isOk) {
+
+            User newUser = new User(textFieldUserName.getValue(), passwordEncoder.encode(passwordFieldPassword.getValue()));
+
+            newUser.setRoles(Collections.singletonList(new Role(TypeOfRole.ROLE_USER)));
+
+            List<Alcohol> favourites = new ArrayList<>();
+
+            newUser.setFavourites(favourites);
+            userRepo.save(newUser);
+
+            Notification.show("You create an account", 3000, Notification.Position.TOP_CENTER);
+
+            buttonCreateUser.getUI().ifPresent(ui -> ui.navigate(""));
+        }
     }
 }

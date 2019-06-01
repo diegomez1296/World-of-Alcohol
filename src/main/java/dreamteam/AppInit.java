@@ -2,6 +2,7 @@ package dreamteam;
 
 import dreamteam.DAO.Alcohol;
 import dreamteam.DAO.Role;
+import dreamteam.DAO.TypeOfRole;
 import dreamteam.DAO.User;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.OrderRepo;
@@ -38,8 +39,8 @@ public class AppInit {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
-        Role adminRole = new Role("ROLE_ADMIN");
-        Role userRole = new Role("ROLE_USER");
+        Role adminRole = new Role(TypeOfRole.ROLE_ADMIN);
+        Role userRole = new Role(TypeOfRole.ROLE_USER);
 
         User admin = new User("admin", passwordEncoder.encode("admin"));
         User user = new User("user", passwordEncoder.encode("user"));
