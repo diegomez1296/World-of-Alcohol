@@ -1,0 +1,11 @@
+body{
+    background-color: darkgray;
+}
+.div-alco-card{
+    background-color: aquamarine;
+}
+
+.div-alco-card label{
+    text-align: center;
+    margin: auto;
+}
