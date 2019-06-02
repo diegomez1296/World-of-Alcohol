@@ -58,9 +58,6 @@ public class RegistrationGUI extends VerticalLayout {
         passwordFieldConfirmPassword = new PasswordField("Confirm Password");
         buttonCreateUser = new Button("Create");
 
-
-
-        // Filtering the correct registration - to fix
         buttonCreateUser.addClickListener(buttonClickEvent -> createNewUser());
 
         this.add(textUserRegistration);

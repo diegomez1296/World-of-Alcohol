@@ -1,4 +1,4 @@
-package dreamteam;
+package dreamteam.General;
 
 public class ExampleClass {
 

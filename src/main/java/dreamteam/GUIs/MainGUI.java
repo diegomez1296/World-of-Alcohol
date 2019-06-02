@@ -24,9 +24,7 @@ public class MainGUI extends VerticalLayout {
 
     private final int AMOUNT_ALCOHOL_IN_ROW = 4;
 
-    private AlcoholCard alcoholCard;
     private NavBar navBar;
-    private HorizontalLayout horizontalLayout;
     private AlcoholRepo alcoholRepo;
 
     @Autowired
@@ -45,13 +43,16 @@ public class MainGUI extends VerticalLayout {
         navBar = new NavBar();
         this.add(navBar.getDiv());
 
-        horizontalLayout = new HorizontalLayout();
+        createAlcoholCards();
+
+    }
+
+    private void createAlcoholCards() {
 
         List<HorizontalLayout> horizontalLayoutList = new ArrayList<>();
         List<Alcohol> alcoholList = alcoholRepo.findAll();
         int counter = 0;
         HorizontalLayout tmpLayout = new HorizontalLayout();
-        //horizontalLayoutList.add(tmpLayout);
         for (Alcohol item: alcoholList) {
             if (counter%AMOUNT_ALCOHOL_IN_ROW==0){
                 tmpLayout = new HorizontalLayout();
@@ -65,17 +66,6 @@ public class MainGUI extends VerticalLayout {
         for (HorizontalLayout item: horizontalLayoutList) {
             this.add(item);
         }
-        //alcoholCard = new AlcoholCard(alcoholRepo.findAlcoholByName("Malibu kokosowe"), this);
-
-//        Grid<AlcoholCard> grid = new Grid<>(AlcoholCard.class);
-//        grid.setItems(Collections.singletonList(alcoholCard));
-//        this.add(grid);
-
-//        this.add(alcoholCard.getFavouriteIcon(), alcoholCard.getNameText(), alcoholCard.getPriceText(), alcoholCard.getIsAvailableText(), alcoholCard.getOrderButton());
-
-        //horizontalLayout.add(alcoholCard.setNameText());
-
-
     }
 
 }

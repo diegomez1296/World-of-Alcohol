@@ -24,7 +24,6 @@ public class AlcoholCard {
     private Alcohol alcohol;
     private Label nameLabel;
     private Label priceLabel;
-    private Label isAvailableLabel;
     private Button orderButton;
     private Icon favouriteIcon;
     private VerticalLayout verticalLayoutDiv;
@@ -37,7 +36,6 @@ public class AlcoholCard {
         nameLabel = new Label(alcohol.getName());
         nameLabel.addClassName("name-label");
         priceLabel = new Label("$"+String.format(priceFormat(alcohol.getPrice())));
-        isAvailableLabel = new Label(checkAvailable());
         orderButton = new Button("buy");
         favouriteIcon = new Icon(VaadinIcon.PLUS);
         verticalLayoutDiv = new VerticalLayout();
@@ -45,23 +43,13 @@ public class AlcoholCard {
 
         div = new Div();
 
-        verticalLayoutDiv.add(favouriteIcon,nameLabel,priceLabel,isAvailableLabel,orderButton);
+        verticalLayoutDiv.add(favouriteIcon,nameLabel,priceLabel,orderButton);
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
-
-        //mainHorizontalLayout.add(div);
-    }
-
-    private String checkAvailable() {
-        if (alcohol.getIsAvailable())
-            return "available";
-        return "not available";
     }
 
     private String priceFormat(double price) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(price);
     }
-
-
 }

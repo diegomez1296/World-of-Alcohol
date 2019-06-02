@@ -24,8 +24,6 @@ public class Api {
         for (AlcoholClassApi item : alcoholClassApis) {
             builder.append(item.toString() + System.lineSeparator());
         }
-
-
         return builder.toString();
     }
 }

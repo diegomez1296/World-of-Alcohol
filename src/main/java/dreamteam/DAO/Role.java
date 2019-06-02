@@ -27,7 +27,6 @@ public class Role implements GrantedAuthority {
     @ManyToMany
     private List<User> users;
 
-
     @Override
     public String getAuthority() {
         return roleName+"";

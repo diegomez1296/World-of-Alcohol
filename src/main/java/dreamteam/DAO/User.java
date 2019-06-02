@@ -27,12 +27,8 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
     private List<Role> roles;
 
-
-
     @ManyToMany(mappedBy = "users")
     private List<Alcohol> favourites;
-
-
 
     public User(String username, String password) {
         this.username = username;

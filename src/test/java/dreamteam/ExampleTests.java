@@ -1,5 +1,6 @@
 package dreamteam;
 
+import dreamteam.General.ExampleClass;
 import org.junit.Assert;
 import org.junit.Test;
 

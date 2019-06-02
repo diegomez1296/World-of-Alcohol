@@ -23,7 +23,7 @@ public class Alcohol {
     private double price;
     private String description;
     private String picture;
-    private Boolean isAvailable;
+    //private Boolean isAvailable;
 
     @ManyToMany
     @JoinTable(
@@ -33,12 +33,11 @@ public class Alcohol {
     )
     private List<User> users;
 
-    public Alcohol(String name, int quantity, float price, String description, String picture, Boolean isAvailable) {
+    public Alcohol(String name, int quantity, float price, String description, String picture) {
         this.name = name;
         this.quantity = quantity;
         this.price = price;
         this.description = description;
         this.picture = picture;
-        this.isAvailable = isAvailable;
     }
 }
