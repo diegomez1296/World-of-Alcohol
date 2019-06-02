@@ -47,6 +47,12 @@ public class AppInit {
 
         Alcohol zolte = new Alcohol("Żółte najlepsze", 666, 999.90f, "Najlepsze, bo żółte", "www.xxx.com", true);
         Alcohol malibu = new Alcohol("Malibu kokosowe", 100, 49.99f,"Kokosowe z prądem", "www.malibu.com", true);
+        Alcohol piwo = new Alcohol("Perła Export", 70, 3.99f,"Sfermentowane drożdże o smaku chmielu", "www.malibu.com", true);
+        Alcohol martini = new Alcohol("Martini", 123, 24.99f,"Prawie jak wino", "www.malibu.com", true);
+        Alcohol redlabel = new Alcohol("Red Label", 100, 59.99f,"(Nie)Czerwone whisky", "www.malibu.com", true);
+        Alcohol grants = new Alcohol("Grant's", 100, 49.99f,"Whisky", "www.malibu.com", true);
+        Alcohol carlorosi = new Alcohol("Carlo Rosi", 100, 26.00f,"Wino z tradycją", "www.malibu.com", true);
+        Alcohol kadarka = new Alcohol("Kadarka", 100, 9.99f,"Wino na siarczanach", "www.malibu.com", true);
 
         user.setRoles(Collections.singletonList(userRole));
         admin.setRoles(Collections.singletonList(adminRole));
@@ -63,6 +69,7 @@ public class AppInit {
         alcohols.add(malibu);
 
 
+
         zolte.setUsers(users);
         malibu.setUsers(Collections.singletonList(admin));
         user.setFavourites(alcohols);
@@ -73,6 +80,12 @@ public class AppInit {
 
         alcoholRepo.save(zolte);
         alcoholRepo.save(malibu);
+        alcoholRepo.save(piwo);
+        alcoholRepo.save(redlabel);
+        alcoholRepo.save(grants);
+        alcoholRepo.save(carlorosi);
+        alcoholRepo.save(kadarka);
+        alcoholRepo.save(martini);
 
         roleRepo.save(userRole);
         roleRepo.save(adminRole);

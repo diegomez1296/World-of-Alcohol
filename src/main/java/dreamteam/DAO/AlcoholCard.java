@@ -22,34 +22,34 @@ import java.util.Locale;
 public class AlcoholCard {
 
     private Alcohol alcohol;
-    private Label nameText;
-    private Label priceText;
-    private Label isAvailableText;
+    private Label nameLabel;
+    private Label priceLabel;
+    private Label isAvailableLabel;
     private Button orderButton;
     private Icon favouriteIcon;
-    private VerticalLayout verticalLayout;
     private VerticalLayout verticalLayoutDiv;
     private Div div;
+    private HorizontalLayout mainHorizontalLayout;
 
 
-    public AlcoholCard(Alcohol alcohol, VerticalLayout verticalLayout) {
+    public AlcoholCard(Alcohol alcohol) {
         this.alcohol = alcohol;
-        nameText = new Label(alcohol.getName());
+        nameLabel = new Label(alcohol.getName());
 //        nameText.addClassName("");
-        priceText = new Label("$"+String.format(priceFormat(alcohol.getPrice())));
-        isAvailableText = new Label(checkAvailable());
+        priceLabel = new Label("$"+String.format(priceFormat(alcohol.getPrice())));
+        isAvailableLabel = new Label(checkAvailable());
         orderButton = new Button("buy");
         favouriteIcon = new Icon(VaadinIcon.PLUS);
-        this.verticalLayout = verticalLayout;
         verticalLayoutDiv = new VerticalLayout();
+        this.mainHorizontalLayout = mainHorizontalLayout;
 
         div = new Div();
 
-        verticalLayoutDiv.add(favouriteIcon,nameText,priceText,isAvailableText,orderButton);
+        verticalLayoutDiv.add(favouriteIcon,nameLabel,priceLabel,isAvailableLabel,orderButton);
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
 
-        verticalLayout.add(div);
+        //mainHorizontalLayout.add(div);
     }
 
     private String checkAvailable() {
