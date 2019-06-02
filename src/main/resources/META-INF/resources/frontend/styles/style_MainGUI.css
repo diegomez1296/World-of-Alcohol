@@ -1,11 +1,81 @@
 body{
-    background-color: darkgray;
+    background-image: url("img/bar.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    font-size: 18px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    overflow-x: hidden;
 }
 .div-alco-card{
-    background-color: aquamarine;
+    background-color: rgb(0,0,0,0.75);
+    width: 18vw;
+}
+
+.btn-div{
+    margin-left: auto;
+}
+
+.btn-div vaadin-button{
+    margin: 10px 20px;
+    background: #be973d;
+    color: #000;
+}
+
+.div-alco-card iron-icon{
+    color: #3fbd00;
+    margin-top: 15px;
+    margin-left: 0;
 }
 
 .div-alco-card label{
+    color: #fff;
     text-align: center;
     margin: auto;
+}
+
+.div-alco-card .name-label {
+    font-size: 1.5rem;
+    color: #be973d;
+    position: relative;
+    margin-bottom: 30px;
+}
+.div-alco-card .name-label::after {
+    display: block;
+    content: '';
+    width: 50px;
+    height: 2px;
+    background: #802733;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin: auto;
+    margin-left: -25px;
+}
+
+
+.div-alco-card vaadin-button{
+    width: 100%;
+    background: #802733;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 50px;
+}
+
+.project-title {
+    color: white;
+    font-size: 2.5rem;
+    padding: 0px 50px;
+}
+
+.nav-bar {
+    background-color: rgb(0,0,0,0.75);
+    height: 60px;
+    position: relative;
+    top: -20px;
+    width: 100vw;
+    padding: 20px;
 }

@@ -35,7 +35,7 @@ public class AlcoholCard {
     public AlcoholCard(Alcohol alcohol) {
         this.alcohol = alcohol;
         nameLabel = new Label(alcohol.getName());
-//        nameText.addClassName("");
+        nameLabel.addClassName("name-label");
         priceLabel = new Label("$"+String.format(priceFormat(alcohol.getPrice())));
         isAvailableLabel = new Label(checkAvailable());
         orderButton = new Button("buy");

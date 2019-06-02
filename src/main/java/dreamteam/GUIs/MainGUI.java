@@ -43,7 +43,7 @@ public class MainGUI extends VerticalLayout {
     private void initComponents() {
 
         navBar = new NavBar();
-        this.add(navBar);
+        this.add(navBar.getDiv());
 
         horizontalLayout = new HorizontalLayout();
 
