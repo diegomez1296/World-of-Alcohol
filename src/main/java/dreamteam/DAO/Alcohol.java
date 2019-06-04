@@ -28,8 +28,8 @@ public class Alcohol {
     @ManyToMany
     @JoinTable(
             name = "Favourite",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "alcohol_id") }
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "alcohol_id")}
     )
     private List<User> users;
 
@@ -39,5 +39,10 @@ public class Alcohol {
         this.price = price;
         this.description = description;
         this.picture = picture;
+    }
+
+    @Override
+    public String toString() {
+        return id +" "+ name +" "+ description;
     }
 }
