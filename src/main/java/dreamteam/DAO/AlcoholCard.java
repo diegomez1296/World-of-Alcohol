@@ -1,6 +1,7 @@
 package dreamteam.DAO;
 
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -12,6 +13,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
@@ -24,7 +26,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
+
 
 @Getter
 @Setter
@@ -41,6 +43,9 @@ public class AlcoholCard {
     private HorizontalLayout mainHorizontalLayout;
     private Authentication authentication;
     private String currentPrincipalName;
+    static final List<Long> nums = new ArrayList<Long>() {};
+
+
 
     @Autowired
     private UserRepo userRepo;
@@ -61,16 +66,18 @@ public class AlcoholCard {
 
         initFavouriteIcon();
 
+        orderButton.addClickListener(event ->
+            goToUrl(Constans.APP_URL+"/buy")
+        );
         verticalLayoutDiv.add(favouriteIcon,nameLabel,priceLabel,orderButton);
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
     }
-
+    private void goToUrl(String url) {
+        UI.getCurrent().getPage().executeJavaScript("window.open(\""+ url + "\", \"_self\");");
+    }
     private void initFavouriteIcon() {
-        authentication = SecurityContextHolder.getContext().getAuthentication();
-        currentPrincipalName = authentication.getName();
-
-        if(currentPrincipalName == "anonymousUser") {
+        if(getCurrentUserName() == "anonymousUser") {
             favouriteIcon.addClassNames("favourite-icon","icon-disable");
             Dialog dialog = new Dialog();
             dialog.add(new Label("You have to be logged in to add alcohol to favourite."));
@@ -91,9 +98,7 @@ public class AlcoholCard {
 
     // TUTAJ NIE DZIAŁA :(
     private void addFavourToDB() {
-        authentication = SecurityContextHolder.getContext().getAuthentication();
-        currentPrincipalName=authentication.getName();
-        User user = userRepo.findUserByUsername(currentPrincipalName);
+        User user = userRepo.findUserByUsername(getCurrentUserName());
 
         Alcohol alcohol = this.alcohol;
         alcohol.setUsers(Collections.singletonList(user));
@@ -102,6 +107,10 @@ public class AlcoholCard {
         alcoholRepo.save(alcohol);
     }
 
+    private String getCurrentUserName(){
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
     private String priceFormat(double price) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(price);
