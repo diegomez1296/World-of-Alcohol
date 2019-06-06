@@ -12,13 +12,17 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import dreamteam.Repositories.AlcoholRepo;
+import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,6 +41,13 @@ public class AlcoholCard {
     private HorizontalLayout mainHorizontalLayout;
     private Authentication authentication;
     private String currentPrincipalName;
+
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private AlcoholRepo alcoholRepo;
+
+
 
     public AlcoholCard(Alcohol alcohol) {
         this.alcohol = alcohol;
@@ -73,8 +84,22 @@ public class AlcoholCard {
             favouriteIcon.addClickListener(event -> dialog.open());
         }else {
             favouriteIcon.addClassNames("favourite-icon","icon-enable");
+            favouriteIcon.addClickListener(event -> addFavourToDB());
         }
 
+    }
+
+    // TUTAJ NIE DZIAŁA :(
+    private void addFavourToDB() {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        currentPrincipalName=authentication.getName();
+        User user = userRepo.findUserByUsername(currentPrincipalName);
+
+        Alcohol alcohol = this.alcohol;
+        alcohol.setUsers(Collections.singletonList(user));
+        user.setFavourites(Collections.singletonList(alcohol));
+        userRepo.save(user);
+        alcoholRepo.save(alcohol);
     }
 
     private String priceFormat(double price) {
