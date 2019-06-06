@@ -8,21 +8,38 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import dreamteam.General.Constans;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Getter
 @Setter
 public class NavBar{
     private Label titleLabel;
+    private Label userLabel;
     private Button logInButton;
     private Button logOutButton;
     private Button registerButton;
     private Div div;
     private Div btnDiv;
     private HorizontalLayout horizontalLayout;
+    private Authentication authentication;
+    private String currentPrincipalName;
 
     public NavBar() {
+        authentication = SecurityContextHolder.getContext().getAuthentication();
+        currentPrincipalName = authentication.getName();
+
         initNavBar();
 
+        if(currentPrincipalName == "anonymousUser") {
+            getAnonymousUserNavBar();
+        }else {
+            getUserNavBar();
+        }
+
+    }
+
+    public void getAnonymousUserNavBar(){
         btnDiv.add(logInButton,registerButton);
         horizontalLayout.add(titleLabel, btnDiv);
         div.add(horizontalLayout);
@@ -31,13 +48,10 @@ public class NavBar{
         registerButton.addClickListener(event -> registerButton.getUI().ifPresent(ui -> ui.navigate("register")));
     }
 
-    public NavBar(String userName) {
-        initNavBar();
-
-        btnDiv.add(logOutButton);
+    public void getUserNavBar() {
+        btnDiv.add(userLabel, logOutButton);
         horizontalLayout.add(titleLabel, btnDiv);
         div.add(horizontalLayout);
-
         logOutButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/logout"));
     }
 
@@ -45,6 +59,8 @@ public class NavBar{
         horizontalLayout = new HorizontalLayout();
         titleLabel = new Label("World of Alcohol");
         titleLabel.addClassName("project-title");
+        userLabel = new Label(currentPrincipalName);
+        userLabel.addClassName("username-navbar-txt");
         btnDiv = new Div();
         btnDiv.addClassNames("btn-div");
         div = new Div();

@@ -4,6 +4,8 @@ package dreamteam.DAO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -27,6 +29,7 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
     private List<Role> roles;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(mappedBy = "users")
     private List<Alcohol> favourites;
 
