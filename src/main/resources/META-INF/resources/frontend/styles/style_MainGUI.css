@@ -42,7 +42,36 @@ flow-component-renderer > div {
     background-color: rgb(0,0,0,0.75);
     width: 18vw;
 }
+.details-label{
+    margin-bottom: 50px;
+}
+.alco-details-div{
+    background-color: rgb(0,0,0,0.75);
+    width: 60vw;
+    color: #ffffff;
+    padding: 50px;
+}
+.amount-field{
+    border-bottom: 2px solid #be973d;
+    color: #ffffff !important;
+    margin: 0px 30px ;
+    width: 100px;
+    font-size: 1.7rem;
+}
+.alco-details-div .price-label,
+.alco-details-div .name-label{
+    font-size: 2rem;
+}
 
+.alco-details-div vaadin-button{
+    padding: 5px 15px;
+    background: #802733;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 .btn-div{
     margin-left: auto;
 }
