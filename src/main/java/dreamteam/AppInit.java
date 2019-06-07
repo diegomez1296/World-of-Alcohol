@@ -1,22 +1,14 @@
 package dreamteam;
 
-import dreamteam.DAO.Alcohol;
-import dreamteam.DAO.Role;
-import dreamteam.DAO.TypeOfRole;
-import dreamteam.DAO.User;
-import dreamteam.Repositories.AlcoholRepo;
-import dreamteam.Repositories.OrderRepo;
-import dreamteam.Repositories.RoleRepo;
-import dreamteam.Repositories.UserRepo;
+import dreamteam.DAO.*;
+import dreamteam.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Service
 public class AppInit {
@@ -25,26 +17,33 @@ public class AppInit {
     private RoleRepo roleRepo;
     private AlcoholRepo alcoholRepo;
     private OrderRepo orderRepo;
-
+    private FavouriteRepo favouriteRepo;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, OrderRepo orderRepo, PasswordEncoder passwordEncoder) {
+    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, OrderRepo orderRepo, FavouriteRepo favouriteRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.roleRepo = roleRepo;
         this.alcoholRepo = alcoholRepo;
         this.orderRepo = orderRepo;
+        this.favouriteRepo = favouriteRepo;
         this.passwordEncoder = passwordEncoder;
     }
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
+
+        //region ROLES
         Role adminRole = new Role(TypeOfRole.ROLE_ADMIN);
         Role userRole = new Role(TypeOfRole.ROLE_USER);
+        //endregion
 
+        //region USERS
         User admin = new User("admin", passwordEncoder.encode("admin"));
         User user = new User("user", passwordEncoder.encode("user"));
+        //endregion
 
+        //region ALCOHOLS
         Alcohol zolte = new Alcohol("Żółte najlepsze", 666, 999.90f, "Najlepsze, bo żółte", "www.xxx.com");
         Alcohol malibu = new Alcohol("Malibu kokosowe", 100, 49.99f,"Kokosowe z prądem", "www.malibu.com");
         Alcohol piwo = new Alcohol("Perła Export", 70, 3.99f,"Sfermentowane drożdże o smaku chmielu", "www.malibu.com");
@@ -53,25 +52,13 @@ public class AppInit {
         Alcohol grants = new Alcohol("Grant's", 100, 49.99f,"Whisky", "www.malibu.com");
         Alcohol carlorosi = new Alcohol("Carlo Rosi", 100, 26.00f,"Wino z tradycją", "www.malibu.com");
         Alcohol kadarka = new Alcohol("Kadarka", 100, 9.99f,"Wino na siarczanach", "www.malibu.com");
+        //endregion
 
         user.setRoles(Collections.singletonList(userRole));
         admin.setRoles(Collections.singletonList(adminRole));
 
         userRole.setUsers(Collections.singletonList(user));
         adminRole.setUsers(Collections.singletonList(admin));
-
-        List<User> users = new ArrayList<>();
-        users.add(user);
-        users.add(admin);
-
-        List<Alcohol> alcohols = new ArrayList<>();
-        alcohols.add(zolte);
-        alcohols.add(malibu);
-
-        zolte.setUsers(users);
-        malibu.setUsers(Collections.singletonList(admin));
-        user.setFavourites(alcohols);
-        admin.setFavourites(Collections.singletonList(zolte));
 
         userRepo.save(user);
         userRepo.save(admin);
@@ -85,7 +72,11 @@ public class AppInit {
         alcoholRepo.save(kadarka);
         alcoholRepo.save(martini);
 
-        roleRepo.save(userRole);
         roleRepo.save(adminRole);
+        roleRepo.save(userRole);
+
+        favouriteRepo.save(new Favourite(admin.getUserId()+"", zolte.getId()));
+        favouriteRepo.save(new Favourite(admin.getUserId()+"", malibu.getId()));
+
     }
 }

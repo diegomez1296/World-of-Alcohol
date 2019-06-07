@@ -1,6 +1,5 @@
 package dreamteam.GUIs;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
@@ -9,7 +8,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
-import dreamteam.DAO.Alcohol;
 import dreamteam.DAO.Role;
 import dreamteam.DAO.TypeOfRole;
 import dreamteam.DAO.User;
@@ -19,7 +17,6 @@ import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -83,14 +80,18 @@ public class RegistrationGUI extends VerticalLayout {
 
         if(isOk) {
 
+
+            List<User> userList = userRepo.findAll();
+            Role userRole = roleRepo.findRoleByRoleName(TypeOfRole.ROLE_USER);
+
             User newUser = new User(textFieldUserName.getValue(), passwordEncoder.encode(passwordFieldPassword.getValue()));
+            newUser.setRoles(Collections.singletonList(userRole));
+            userList.add(newUser);
 
-            newUser.setRoles(Collections.singletonList(new Role(TypeOfRole.ROLE_USER)));
+            userRole.setUsers(userList);
 
-            List<Alcohol> favourites = new ArrayList<>();
-
-            newUser.setFavourites(favourites);
             userRepo.save(newUser);
+            roleRepo.save(userRole);
 
             Notification.show("You create an account", 3000, Notification.Position.TOP_CENTER);
 

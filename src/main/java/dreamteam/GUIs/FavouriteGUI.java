@@ -4,11 +4,11 @@ import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import dreamteam.DAO.Alcohol;
-import dreamteam.DAO.AlcoholCard;
-import dreamteam.DAO.NavBar;
-import dreamteam.DAO.User;
+import dreamteam.DAO.*;
+import dreamteam.DAO.VaadinComponents.AlcoholCard;
+import dreamteam.DAO.VaadinComponents.NavBar;
 import dreamteam.Repositories.AlcoholRepo;
+import dreamteam.Repositories.FavouriteRepo;
 import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,56 +19,40 @@ import java.util.List;
 
 @Route("favourite")
 @StyleSheet("frontend://styles/style_MainGUI.css")
-public class FavouriteGUI extends VerticalLayout {
+public class FavouriteGUI extends AlcoholGUI {
+
     private final int AMOUNT_ALCOHOL_IN_ROW = 4;
     private Authentication authentication;
     private String currentPrincipalName;
-    private UserRepo userRepo;
-    private NavBar navBar;
-    private AlcoholRepo alcoholRepo;
 
-    @Autowired
-    public FavouriteGUI(AlcoholRepo alcoholRepo, UserRepo userRepo) {
-        this.userRepo = userRepo;
-        this.alcoholRepo = alcoholRepo;
-        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
-        setSizeFull();
+    public FavouriteGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
+        super(userRepo, alcoholRepo, favouriteRepo);
+
         addClassName("favour-gui");
-
-        initComponents();
-    }
-
-    private void initComponents() {
-        navBar = new NavBar();
-        this.add(navBar.getDiv());
         createAlcoholCards();
-
     }
 
     private void createAlcoholCards() {
         authentication = SecurityContextHolder.getContext().getAuthentication();
         currentPrincipalName=authentication.getName();
-        User user = userRepo.findUserByUsername(currentPrincipalName);
-        List<Alcohol> alcoholList = user.getFavourites();
+        User user = getUserRepo().findUserByUsername(currentPrincipalName);
 
-        List<HorizontalLayout> horizontalLayoutList = new ArrayList<>();
+        List<Favourite> favouriteAlcoList = getFavouriteRepo().findAllByStringUserId(user.getUserId()+"");
+        List<Alcohol> alcoholList = new ArrayList<>();
 
-        int counter = 0;
-        HorizontalLayout tmpLayout = new HorizontalLayout();
-        for (Alcohol item: alcoholList) {
-            if (counter%AMOUNT_ALCOHOL_IN_ROW==0){
-                tmpLayout = new HorizontalLayout();
-                horizontalLayoutList.add(tmpLayout);
-            }
-            AlcoholCard tmp = new AlcoholCard(item);
-            tmpLayout.add(tmp.getDiv());
-            counter++;
+        for (Favourite item :favouriteAlcoList) {
+            alcoholList.add(getAlcoholRepo().findAlcoholById(item.getAlcohol_id()));
         }
 
-        for (HorizontalLayout item: horizontalLayoutList) {
-            this.add(item);
-        }
+        super.addAlcoholCards(alcoholList);
+
+        initAlcoholCardsListeners(this.getAlcoholCardList());
+
     }
 
+    private void initAlcoholCardsListeners(List<AlcoholCard> alcoholCardList) {
+
+        //Obsługa listenerow w Favourite GUI
+    }
 
 }

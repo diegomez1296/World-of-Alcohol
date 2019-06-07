@@ -23,15 +23,6 @@ public class Alcohol {
     private double price;
     private String description;
     private String picture;
-    //private Boolean isAvailable;
-
-    @ManyToMany
-    @JoinTable(
-            name = "Favourite",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "alcohol_id")}
-    )
-    private List<User> users;
 
     public Alcohol(String name, int quantity, float price, String description, String picture) {
         this.name = name;

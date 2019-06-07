@@ -1,4 +1,4 @@
-package dreamteam.DAO;
+package dreamteam.DAO.VaadinComponents;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -31,7 +31,7 @@ public class NavBar{
 
         initNavBar();
 
-        if(currentPrincipalName == "anonymousUser") {
+        if(currentPrincipalName.equals("anonymousUser")) {
             getAnonymousUserNavBar();
         }else {
             getUserNavBar();
@@ -39,7 +39,7 @@ public class NavBar{
 
     }
 
-    public void getAnonymousUserNavBar(){
+    private void getAnonymousUserNavBar(){
         btnDiv.add(logInButton,registerButton);
         horizontalLayout.add(titleLabel, btnDiv);
         div.add(horizontalLayout);
@@ -48,7 +48,7 @@ public class NavBar{
         registerButton.addClickListener(event -> registerButton.getUI().ifPresent(ui -> ui.navigate("register")));
     }
 
-    public void getUserNavBar() {
+    private void getUserNavBar() {
         btnDiv.add(userLabel, logOutButton);
         horizontalLayout.add(titleLabel, btnDiv);
         div.add(horizontalLayout);
