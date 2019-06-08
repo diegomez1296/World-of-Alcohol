@@ -1,5 +1,6 @@
 package dreamteam.DAO.VaadinComponents;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -11,6 +12,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import dreamteam.DAO.Alcohol;
+import dreamteam.General.Constans;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.Authentication;
@@ -46,11 +48,15 @@ public class AlcoholCard {
         verticalLayoutDiv.add(favouriteIconComponent.getFavouriteIcon(),nameLabel,priceLabel,orderButton);
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
+        orderButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/order"));
+
     }
 
     private String priceFormat(double price) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(price);
     }
-
+    private void goToUrl(String url) {
+        UI.getCurrent().getPage().executeJavaScript("window.open(\""+ url + "\", \"_self\");");
+    }
 }

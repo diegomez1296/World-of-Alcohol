@@ -10,6 +10,7 @@ import com.vaadin.flow.router.Route;
 import dreamteam.DAO.*;
 import dreamteam.DAO.VaadinComponents.AlcoholCard;
 import dreamteam.DAO.VaadinComponents.NavBar;
+import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
 import dreamteam.Repositories.UserRepo;
@@ -18,10 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dreamteam.DAO.StaticList.tempList;
+
 @Route("")
 @StyleSheet("frontend://styles/style_MainGUI.css")
 public class MainGUI extends AlcoholGUI {
-
+    private NavBar navBar;
 
     public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
         super(userRepo, alcoholRepo, favouriteRepo);
@@ -41,7 +44,6 @@ public class MainGUI extends AlcoholGUI {
     }
 
     private void initAlcoholCardsListeners(List<AlcoholCard> alcoholCardList) {
-
         for (AlcoholCard card : alcoholCardList) {
             card.getFavouriteIconComponent().getFavouriteIcon().addClickListener(iconClickEvent -> {
 
@@ -53,6 +55,10 @@ public class MainGUI extends AlcoholGUI {
                 else {
                     addFavourToDB(card.getAlcohol(), currentPrincipalName);
                 }
+            });
+            card.getOrderButton().addClickListener(btnClickEvent -> {
+                tempList.add(card.getAlcohol().getId());
+                navBar.goToUrl(Constans.APP_URL+"/order");
             });
         }
     }

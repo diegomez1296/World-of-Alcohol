@@ -28,11 +28,12 @@ flow-component-renderer > div {
 }
 .dialog-cancel-btn{
     padding: 10px 30px;
-    margin: 30px 0;
+    margin: 30px auto;
     background: #802733;
     color: #fff;
-    border:0px;
+    border: 0px;
     text-transform: uppercase;
+    display: block;
 }
 .username-navbar-txt{
     color: #be973d;

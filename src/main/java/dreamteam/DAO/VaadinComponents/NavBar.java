@@ -90,7 +90,7 @@ public class NavBar{
         tooltip.addClassName("tooltip");
     }
 
-    private void goToUrl(String url) {
+    public void goToUrl(String url) {
         UI.getCurrent().getPage().executeJavaScript("window.open(\""+ url + "\", \"_self\");");
     }
 }

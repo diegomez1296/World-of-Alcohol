@@ -29,7 +29,7 @@ import java.util.Collections;
 @Getter
 @Setter
 @StyleSheet("frontend://styles/style_AlcoholCard")
-public class AlcoholCardDetails {
+public class OrderCard {
     private final int AMOUNT_ALCOHOL_IN_ROW = 4;
     private Alcohol alcohol;
     private Label nameLabel;
@@ -51,7 +51,7 @@ public class AlcoholCardDetails {
 
 
 
-    public AlcoholCardDetails(Alcohol alcohol) {
+    public OrderCard(Alcohol alcohol) {
         this.alcohol = alcohol;
         nameLabel = new Label(alcohol.getName());
         nameLabel.addClassName("name-label");
@@ -64,18 +64,11 @@ public class AlcoholCardDetails {
         horizontalLayout = new HorizontalLayout();
         div = new Div();
         amountField = new TextField();
+        amountField.setValue("1");
         amountField.addClassName("amount-field");
 
         authentication = SecurityContextHolder.getContext().getAuthentication();
         currentPrincipalName = authentication.getName();
-
-
-        confirmButton.addClickListener(event -> {
-            Long userId = userRepo.findUserByUsername("user").getUserId();
-//            Long userId = userRepo.findUserByUsername(currentPrincipalName).getUserId();
-            AOrder order = new AOrder(userId,alcohol.getId(),Integer.parseInt(amountField.getValue()), true);
-            orderRepo.save(order);
-        });
 
         horizontalLayout.add(priceLabel, amountField, confirmButton);
         verticalLayoutDiv.add(nameLabel, detailsLabel,horizontalLayout);
