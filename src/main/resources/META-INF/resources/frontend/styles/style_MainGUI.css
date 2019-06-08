@@ -11,15 +11,18 @@ body{
 flow-component-renderer > div {
     text-align: center;
 }
-.div-alco-card .favourite-icon{
+.div-alco-card .add-favourite-icon{
     margin-top: 15px;
     margin-left: 0;
 }
-.favourite-icon.icon-enable{
+.favour-gui .add-favourite-icon{
+    visibility: hidden;
+}
+.add-favourite-icon.icon-enable{
     cursor: pointer;
     color: #3fbd00;
 }
-.favourite-icon.icon-disable{
+.add-favourite-icon.icon-disable{
     color: #676767;
     cursor: default;
 }
@@ -62,7 +65,35 @@ flow-component-renderer > div {
 .alco-details-div .name-label{
     font-size: 2rem;
 }
+.favourite-icon{
+    color: #b93245;
+    cursor: pointer;
+    padding-left: 35px;
+}
+.home-icon{
+    color: #be973d;
+    cursor: pointer;
 
+}
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 12px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    margin-left: -70px;
+    bottom: 10px;
+}
+
+.tooltip .favourite-icon:hover + .tooltiptext {
+    visibility: visible;
+}
 .alco-details-div vaadin-button{
     padding: 5px 15px;
     background: #802733;
@@ -72,10 +103,12 @@ flow-component-renderer > div {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-.btn-div{
+.tooltip{
+    padding: 13px 0px;
+}
+.leftside-div{
     margin-left: auto;
 }
-
 .btn-div vaadin-button{
     margin: 10px 20px;
     background: #be973d;

@@ -25,11 +25,11 @@ public class FavouriteIconComponent {
 
         if(isPlus) {
             favouriteIcon = new Icon(VaadinIcon.PLUS);
-            favouriteIcon.addClassNames("favourite-icon", "icon-enable");
+            favouriteIcon.addClassNames("add-favourite-icon", "icon-enable");
         }
         else {
             favouriteIcon = new Icon(VaadinIcon.MINUS);
-            favouriteIcon.addClassNames("favourite-icon", "icon-disable");
+            favouriteIcon.addClassNames("add-favourite-icon", "icon-disable");
         }
 
 

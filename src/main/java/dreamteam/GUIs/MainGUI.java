@@ -2,6 +2,7 @@ package dreamteam.GUIs;
 
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -20,6 +21,7 @@ import java.util.List;
 @Route("")
 @StyleSheet("frontend://styles/style_MainGUI.css")
 public class MainGUI extends AlcoholGUI {
+
 
     public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
         super(userRepo, alcoholRepo, favouriteRepo);
@@ -54,10 +56,35 @@ public class MainGUI extends AlcoholGUI {
             });
         }
     }
-    private void addFavourToDB(Alcohol alcohol, String currentPrincipalName) {
 
+    private void addFavourToDB(Alcohol alcohol, String currentPrincipalName) {
+        String dialogText;
+        boolean isFavourite = false;
         User user = getUserRepo().findUserByUsername(currentPrincipalName);
-        getFavouriteRepo().save(new Favourite(user.getUserId()+"", alcohol.getId()));
+        List<Favourite> favouriteAlcoList = getFavouriteRepo().findAllByStringUserId(user.getUserId()+"");
+
+        for (Favourite item : favouriteAlcoList) {
+            if (alcohol.getId() == item.getAlcohol_id()){
+                isFavourite = true;
+                dialogText = alcohol.getName() + " is already in your favourites!";
+                initDialog(dialogText);
+            }
+        }
+        if (!isFavourite){
+            getFavouriteRepo().save(new Favourite(user.getUserId()+"", alcohol.getId()));
+            dialogText = "The alcohol was added successfully!";
+            initDialog(dialogText);
+        }
+    }
+
+    private void initDialog(String txt) {
+        Dialog dialog = new Dialog();
+        dialog.add(new Label(txt));
+
+        dialog.setWidth("400px");
+        dialog.setHeight("30px");
+
+        dialog.open();
     }
 
 }
