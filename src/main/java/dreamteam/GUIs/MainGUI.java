@@ -24,7 +24,6 @@ import static dreamteam.DAO.StaticList.tempList;
 @Route("")
 @StyleSheet("frontend://styles/style_MainGUI.css")
 public class MainGUI extends AlcoholGUI {
-    private NavBar navBar;
 
     public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
         super(userRepo, alcoholRepo, favouriteRepo);
@@ -58,7 +57,7 @@ public class MainGUI extends AlcoholGUI {
             });
             card.getOrderButton().addClickListener(btnClickEvent -> {
                 tempList.add(card.getAlcohol().getId());
-                navBar.goToUrl(Constans.APP_URL+"/order");
+                getNavBar().goToUrl(Constans.APP_URL+"/order");
             });
         }
     }

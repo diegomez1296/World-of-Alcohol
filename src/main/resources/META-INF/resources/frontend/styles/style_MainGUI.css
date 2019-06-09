@@ -69,7 +69,8 @@ flow-component-renderer > div {
 .favourite-icon{
     color: #b93245;
     cursor: pointer;
-    padding-left: 35px;
+    /*padding-left: 35px;*/
+    margin-left: 35px;
 }
 .home-icon{
     color: #be973d;
