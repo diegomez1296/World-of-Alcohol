@@ -1,11 +1,13 @@
 package dreamteam.DAO;
 
+import dreamteam.General.Constans;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Entity
@@ -34,6 +36,6 @@ public class Alcohol {
 
     @Override // * -> for Unity
     public String toString() {
-        return id +"*"+ name +"*"+ description;
+        return id +"*"+ name +"*"+ description + "*" + String.format(Constans.priceFormat(price));
     }
 }

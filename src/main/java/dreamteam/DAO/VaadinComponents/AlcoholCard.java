@@ -40,7 +40,7 @@ public class AlcoholCard {
         this.alcohol = alcohol;
         nameLabel = new Label(alcohol.getName());
         nameLabel.addClassName("name-label");
-        priceLabel = new Label("$"+String.format(priceFormat(alcohol.getPrice())));
+        priceLabel = new Label("$"+String.format(Constans.priceFormat(alcohol.getPrice())));
         orderButton = new Button("buy");
         verticalLayoutDiv = new VerticalLayout();
         div = new Div();
@@ -52,10 +52,6 @@ public class AlcoholCard {
 
     }
 
-    private String priceFormat(double price) {
-        DecimalFormat df = new DecimalFormat("0.00");
-        return df.format(price);
-    }
     private void goToUrl(String url) {
         UI.getCurrent().getPage().executeJavaScript("window.open(\""+ url + "\", \"_self\");");
     }
