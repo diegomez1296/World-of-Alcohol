@@ -46,12 +46,9 @@ public class Api {
     }
 
     @GetMapping("/login/{username}/getFav")
-    public Map<String, String> getFavAlco(@PathVariable("username") String username) {
+    public String getFavAlco(@PathVariable("username") String username) {
 
         User user = userRepo.findUserByUsername(username);
-
-        HashMap<String, String> userDataMap = new HashMap<>();
-        userDataMap.put("username", user.getUsername());
 
         List<Favourite> favouriteAlcoList = favouriteRepo.findAllByStringUserId(user.getUserId()+"");
         List<Alcohol> alcoholList = new ArrayList<>();
@@ -59,19 +56,14 @@ public class Api {
         for (Favourite item : favouriteAlcoList) {
             alcoholList.add(alcoholRepo.findAlcoholById(item.getAlcohol_id()));
         }
-
-        for (Alcohol item : alcoholList) {
-            userDataMap.put(item.getId()+"", item.getName());
-        }
-
-        return userDataMap;
+        return formatAlcoList(alcoholList);
     }
 
     private String formatAlcoList(List<Alcohol> alcoholList) {
         StringBuilder builder = new StringBuilder();
         for (Alcohol item : alcoholList) {
             builder.append(item.toString());
-            builder.append("||");
+            builder.append("|");
         }
         return builder.toString();
     }

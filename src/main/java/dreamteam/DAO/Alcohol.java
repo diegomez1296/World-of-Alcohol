@@ -32,8 +32,8 @@ public class Alcohol {
         this.picture = picture;
     }
 
-    @Override
+    @Override // * -> for Unity
     public String toString() {
-        return id +" "+ name +" "+ description;
+        return id +"*"+ name +"*"+ description;
     }
 }
