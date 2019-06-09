@@ -15,7 +15,7 @@ import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
 import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
-import dreamteam.Repositories.OrderRepo;
+import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,7 +47,7 @@ public class OrderCard {
     @Autowired
     private UserRepo userRepo;
     @Autowired
-    private OrderRepo orderRepo;
+    private AOrderRepo AOrderRepo;
 
 
 

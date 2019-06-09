@@ -3,20 +3,17 @@ package dreamteam.GUIs;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import dreamteam.DAO.*;
+import dreamteam.DAO.Alcohol;
+import dreamteam.DAO.Favourite;
+import dreamteam.DAO.User;
 import dreamteam.DAO.VaadinComponents.AlcoholCard;
-import dreamteam.DAO.VaadinComponents.NavBar;
 import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
+import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static dreamteam.DAO.StaticList.tempList;
@@ -25,8 +22,8 @@ import static dreamteam.DAO.StaticList.tempList;
 @StyleSheet("frontend://styles/style_MainGUI.css")
 public class MainGUI extends AlcoholGUI {
 
-    public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
-        super(userRepo, alcoholRepo, favouriteRepo);
+    public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
+        super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
         addClassName("main-gui");
 

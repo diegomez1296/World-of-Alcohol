@@ -13,7 +13,7 @@ import dreamteam.DAO.User;
 import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
-import dreamteam.Repositories.OrderRepo;
+import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,18 +29,19 @@ public class OrderGUI extends AlcoholGUI {
     private UserRepo userRepo;
 
     @Autowired
-    private OrderRepo orderRepo;
+    private AOrderRepo AOrderRepo;
 
 
     @Autowired
-    public OrderGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
-        super(userRepo, alcoholRepo, favouriteRepo);
+    public OrderGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
+        super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         setSizeFull();
         addClassName("details-gui");
-        createAlcoCard(tempList.get(tempList.size() - 1));
-        
+        int last = tempList.size() - 1;
+        createAlcoCard(tempList.get(last));
+
     }
 
 
@@ -60,7 +61,7 @@ public class OrderGUI extends AlcoholGUI {
         User user = getUserRepo().findUserByUsername(currentPrincipalName);
 
         Long userId = user.getUserId();
-        orderRepo.save(new AOrder(userId, alcoId, Integer.parseInt(cardDetails.getAmountField().getValue()), false));
+        AOrderRepo.save(new AOrder(userId, alcoId, Integer.parseInt(cardDetails.getAmountField().getValue()), false));
         initDialog();
     }
 
@@ -69,7 +70,7 @@ public class OrderGUI extends AlcoholGUI {
         dialog.add(new Label("The order has been successfully sent. Now give your money, bitch!"));
 
         dialog.setWidth("400px");
-        dialog.setHeight("120px");
+        dialog.setHeight("130px");
         NativeButton cancelButton = new NativeButton("Cancel", event -> goToUrl(Constans.APP_URL+"/"));
         cancelButton.addClassName("dialog-cancel-btn");
         dialog.add(cancelButton);

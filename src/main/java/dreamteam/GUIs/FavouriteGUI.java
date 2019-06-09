@@ -9,6 +9,7 @@ import dreamteam.DAO.VaadinComponents.AlcoholCard;
 import dreamteam.DAO.VaadinComponents.NavBar;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
+import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,8 +26,8 @@ public class FavouriteGUI extends AlcoholGUI {
     private Authentication authentication;
     private String currentPrincipalName;
 
-    public FavouriteGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
-        super(userRepo, alcoholRepo, favouriteRepo);
+    public FavouriteGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
+        super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
         addClassName("favour-gui");
         createAlcoholCards();

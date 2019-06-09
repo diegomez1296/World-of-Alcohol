@@ -8,6 +8,7 @@ import dreamteam.DAO.VaadinComponents.NavBar;
 import dreamteam.General.Constans;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
+import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,16 +24,16 @@ public abstract class AlcoholGUI extends VerticalLayout{
     private UserRepo userRepo;
     private AlcoholRepo alcoholRepo;
     private FavouriteRepo favouriteRepo;
-
+    private AOrderRepo AOrderRepo;
     private List<AlcoholCard> alcoholCardList;
-
     private NavBar navBar;
 
     @Autowired
-    public AlcoholGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo) {
+    public AlcoholGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
         this.userRepo = userRepo;
         this.alcoholRepo = alcoholRepo;
         this.favouriteRepo = favouriteRepo;
+        this.AOrderRepo = AOrderRepo;
 
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         setSizeFull();

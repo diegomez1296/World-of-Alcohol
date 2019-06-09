@@ -18,14 +18,14 @@ public class AOrder {
     @GeneratedValue
     private Long id;
 
-    private Long user_id;
-    private Long alcohol_id;
+    private Long userId;
+    private Long alcoholId;
     private int quantity;
     private Boolean isDone;
 
-    public AOrder(Long user_id, Long alcohol_id, int quantity, Boolean isDone) {
-        this.user_id = user_id;
-        this.alcohol_id = alcohol_id;
+    public AOrder(Long userId, Long alcoholId, int quantity, Boolean isDone) {
+        this.userId = userId;
+        this.alcoholId = alcoholId;
         this.quantity = quantity;
         this.isDone = isDone;
     }

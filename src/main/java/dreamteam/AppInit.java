@@ -16,16 +16,16 @@ public class AppInit {
     private UserRepo userRepo;
     private RoleRepo roleRepo;
     private AlcoholRepo alcoholRepo;
-    private OrderRepo orderRepo;
+    private AOrderRepo AOrderRepo;
     private FavouriteRepo favouriteRepo;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, OrderRepo orderRepo, FavouriteRepo favouriteRepo, PasswordEncoder passwordEncoder) {
+    public AppInit(UserRepo userRepo, RoleRepo roleRepo, AlcoholRepo alcoholRepo, AOrderRepo AOrderRepo, FavouriteRepo favouriteRepo, PasswordEncoder passwordEncoder) {
         this.userRepo = userRepo;
         this.roleRepo = roleRepo;
         this.alcoholRepo = alcoholRepo;
-        this.orderRepo = orderRepo;
+        this.AOrderRepo = AOrderRepo;
         this.favouriteRepo = favouriteRepo;
         this.passwordEncoder = passwordEncoder;
     }
@@ -77,6 +77,10 @@ public class AppInit {
 
         favouriteRepo.save(new Favourite(admin.getUserId()+"", zolte.getId()));
         favouriteRepo.save(new Favourite(admin.getUserId()+"", malibu.getId()));
+
+        AOrderRepo.save(new AOrder(user.getUserId(),2L,10,false));
+        AOrderRepo.save(new AOrder(user.getUserId(),4L,1,false));
+        AOrderRepo.save(new AOrder(user.getUserId(),5L,3,false));
 
     }
 }
