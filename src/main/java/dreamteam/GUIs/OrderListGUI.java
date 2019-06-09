@@ -26,7 +26,7 @@ public class OrderListGUI extends AlcoholGUI {
     public OrderListGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
         super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
-        addClassName("orderlist-gui");
+        addClassNames("orderlist-gui","main-bg");
         //OrderList orderList = new OrderList();
         String currentUser = this.getNavBar().getUserLabel().getText();
         User user = getUserRepo().findUserByUsername(currentUser);
@@ -44,7 +44,7 @@ public class OrderListGUI extends AlcoholGUI {
             else
                 status = "in progress";
 
-            tempList.add(new OrderList(i, alcohol.getName(),  item.getQuantity(), String.format(Constans.priceFormat(alcohol.getPrice())), String.format(Constans.priceFormat(summary)),status));
+            tempList.add(new OrderList(i, alcohol.getName(),  item.getQuantity(), "$"+String.format(Constans.priceFormat(alcohol.getPrice())), "$"+String.format(Constans.priceFormat(summary)),status));
 //            System.out.println(getAlcoholRepo().findAlcoholById(item.getAlcoholId()));
         }
 

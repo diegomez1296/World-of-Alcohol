@@ -28,8 +28,7 @@ public class FavouriteGUI extends AlcoholGUI {
 
     public FavouriteGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
         super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
-
-        addClassName("favour-gui");
+        addClassNames("favour-gui","main-bg");
         createAlcoholCards();
     }
 

@@ -44,14 +44,14 @@ public class AppInit {
         //endregion
 
         //region ALCOHOLS
-        Alcohol zolte = new Alcohol("Żółte najlepsze", 666, 999.90f, "Najlepsze, bo żółte", "www.xxx.com");
-        Alcohol malibu = new Alcohol("Malibu kokosowe", 100, 49.99f,"Kokosowe z prądem", "www.malibu.com");
-        Alcohol piwo = new Alcohol("Perła Export", 70, 3.99f,"Sfermentowane drożdże o smaku chmielu", "www.malibu.com");
-        Alcohol martini = new Alcohol("Martini", 123, 24.99f,"Prawie jak wino", "www.malibu.com");
-        Alcohol redlabel = new Alcohol("Red Label", 100, 59.99f,"(Nie)Czerwone whisky", "www.malibu.com");
-        Alcohol grants = new Alcohol("Grant's", 100, 49.99f,"Whisky", "www.malibu.com");
-        Alcohol carlorosi = new Alcohol("Carlo Rosi", 100, 26.00f,"Wino z tradycją", "www.malibu.com");
-        Alcohol kadarka = new Alcohol("Kadarka", 100, 9.99f,"Wino na siarczanach", "www.malibu.com");
+        Alcohol zolte = new Alcohol("Fonseca Porto", 666, 99.90f, "This wine shows fresh, black fruit and dark cherry aromas and flavors, with spice notes. This concentrated, structured wine has great volume and mouthfeel, with fine length on the finish.", "www.xxx.com");
+        Alcohol malibu = new Alcohol("Malibu kokosowe", 100, 21.99f,"This delicious, refreshing rum can be mixed into many cocktails, making Malibu Lime a winning combination reminiscent of summer fun!", "www.malibu.com");
+        Alcohol piwo = new Alcohol("Perła Export", 70, 0.85f,"A refreshing beer that is the quintessence of traditional production methods and the latest solutions used in brewing. It has a distinctive, strong taste, golden color and a subtle scent of aromatic hops. ", "www.malibu.com");
+        Alcohol martini = new Alcohol("Martini", 123, 8.49f,"MARTINI IS MORE THAN THE VERMOUTH. IT'S THE STORY OF TWO MEN WITH A VISION. OF A FERTILE LAND WHERE EXPERT WINEMAKING MEETS WILD BOTANICALS. AND OF A LEGACY OF CRAFTSMANSHIP AND EXPERTISE IN EVERY BOTTLE.", "www.malibu.com");
+        Alcohol redlabel = new Alcohol("Red Label", 100, 20.99f,"One of the most popular mixed whiskey in the world by Johnnie Walker. Its taste is the result of a harmonious combination of 35 ingredients: both malt and unmalted (grain) malt whiskeys.", "www.malibu.com");
+        Alcohol grants = new Alcohol("Grant's", 100, 22.00f,"Many whiskies take their flavour from just one cask, but we mature Grant’s Triple Wood in three different types of wood: Virgin Oak cask provides spicy robustness, American Oak lends subtle vanilla smoothness.", "www.malibu.com");
+        Alcohol carlorosi = new Alcohol("Carlo Rossi", 100, 8.00f,"WCarlo Rossi is the largest and most popular wine brand in Poland. Its origins date back to the early 70's, when it made its debut on the American market with great success.", "www.malibu.com");
+        Alcohol kadarka = new Alcohol("Captain Morgan", 100, 24.99f,"Captain Morgan Spiced Gold is a Caribbean rum appreciated by experts in good spirits around the world. The meticulously controlled process of triple distillation and aging in Bourbon casks makes the presented drink impresses.", "www.malibu.com");
         //endregion
 
         user.setRoles(Collections.singletonList(userRole));

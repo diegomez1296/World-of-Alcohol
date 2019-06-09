@@ -38,7 +38,8 @@ public class OrderGUI extends AlcoholGUI {
 
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
         setSizeFull();
-        addClassName("details-gui");
+        addClassNames("details-gui","main-bg");
+
         int last = tempList.size() - 1;
         createAlcoCard(tempList.get(last));
 
@@ -67,11 +68,11 @@ public class OrderGUI extends AlcoholGUI {
 
     private void initDialog() {
         Dialog dialog = new Dialog();
-        dialog.add(new Label("The order has been successfully sent. Now give your money, bitch!"));
+        dialog.add(new Label("The order has been successfully sent!"));
 
         dialog.setWidth("400px");
         dialog.setHeight("130px");
-        NativeButton cancelButton = new NativeButton("Cancel", event -> goToUrl(Constans.APP_URL+"/"));
+        NativeButton cancelButton = new NativeButton("check order", event -> goToUrl(Constans.APP_URL+"/orderlist"));
         cancelButton.addClassName("dialog-cancel-btn");
         dialog.add(cancelButton);
         dialog.open();

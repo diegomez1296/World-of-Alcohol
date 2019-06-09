@@ -31,6 +31,7 @@ public class NavBar{
     private Span tooltiptext;
     private Div tooltip;
     private Icon homeIcon;
+    private Icon orderListIcon;
 
     public NavBar() {
         authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -56,7 +57,7 @@ public class NavBar{
     }
 
     private void getUserNavBar() {
-        tooltip.add(userLabel, homeIcon, favouriteIcon, tooltiptext);
+        tooltip.add(userLabel, homeIcon, orderListIcon, favouriteIcon, tooltiptext);
         tooltip.addClassNames("leftside-div");
         btnDiv.add(logOutButton);
         horizontalLayout.add(titleLabel, tooltip, btnDiv);
@@ -64,6 +65,7 @@ public class NavBar{
         logOutButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/logout"));
         homeIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/"));
         favouriteIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/favourite"));
+        orderListIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/orderlist"));
 
     }
 
@@ -84,6 +86,8 @@ public class NavBar{
         favouriteIcon.addClassName("favourite-icon");
         homeIcon = new Icon(VaadinIcon.HOME);
         homeIcon.addClassName("home-icon");
+        orderListIcon = new Icon(VaadinIcon.LINES_LIST);
+        orderListIcon.addClassName("home-icon");
         tooltiptext = new Span("favourites \nalcoholes");
         tooltiptext.addClassName("tooltiptext");
         tooltip = new Div();

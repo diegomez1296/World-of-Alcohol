@@ -1,11 +1,13 @@
 body{
+    font-size: 18px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    overflow-x: hidden;
+}
+.main-bg{
     background-image: url("img/bar.jpg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
-    font-size: 18px;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    overflow-x: hidden;
 }
 
 flow-component-renderer > div {
@@ -75,12 +77,12 @@ vaadin-grid{
     color: #b93245;
     cursor: pointer;
     /*padding-left: 35px;*/
-    margin-left: 35px;
+    /*margin-left: 35px;*/
 }
 .home-icon{
     color: #be973d;
     cursor: pointer;
-
+    margin-right: 35px;
 }
 .tooltiptext {
     visibility: hidden;

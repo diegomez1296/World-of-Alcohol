@@ -25,8 +25,7 @@ public class MainGUI extends AlcoholGUI {
     public MainGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
         super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
-        addClassName("main-gui");
-
+        addClassNames("main-gui","main-bg");
         createAlcoholCards();
     }
 
