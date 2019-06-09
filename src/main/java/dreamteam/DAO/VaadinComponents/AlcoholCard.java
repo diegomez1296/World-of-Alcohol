@@ -3,12 +3,8 @@ package dreamteam.DAO.VaadinComponents;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.NativeButton;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import dreamteam.DAO.Alcohol;
@@ -16,8 +12,6 @@ import dreamteam.General.Constans;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.Authentication;
-
-import java.text.DecimalFormat;
 
 @Getter
 @Setter
