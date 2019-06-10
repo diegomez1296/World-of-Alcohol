@@ -43,7 +43,6 @@ public class AlcoholCard {
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
         orderButton.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/order"));
-
     }
 
     private void goToUrl(String url) {

@@ -2,7 +2,6 @@ package dreamteam.GUIs;
 
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import dreamteam.DAO.AOrder;
 import dreamteam.DAO.Alcohol;
@@ -13,7 +12,6 @@ import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.FavouriteRepo;
 import dreamteam.Repositories.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,6 @@ public class OrderListGUI extends AlcoholGUI {
         super(userRepo, alcoholRepo, favouriteRepo, AOrderRepo);
 
         addClassNames("orderlist-gui","main-bg");
-        //OrderList orderList = new OrderList();
         String currentUser = this.getNavBar().getUserLabel().getText();
         User user = getUserRepo().findUserByUsername(currentUser);
         List<AOrder> orderList = AOrderRepo.findAllByUserId(user.getUserId());
@@ -45,7 +42,6 @@ public class OrderListGUI extends AlcoholGUI {
                 status = "in progress";
 
             tempList.add(new OrderList(i, alcohol.getName(),  item.getQuantity(), "$"+String.format(Constans.priceFormat(alcohol.getPrice())), "$"+String.format(Constans.priceFormat(summary)),status));
-//            System.out.println(getAlcoholRepo().findAlcoholById(item.getAlcoholId()));
         }
 
         Grid<OrderList> grid = new Grid<>(OrderList.class);

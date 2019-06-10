@@ -1,23 +1,12 @@
 package dreamteam.DAO.VaadinComponents;
 
-import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.grid.Grid;
-import dreamteam.DAO.AOrder;
-import dreamteam.DAO.User;
-import dreamteam.Repositories.AOrderRepo;
-import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.util.List;
 
 @Getter
 @Setter
-//@NoArgsConstructor
+@NoArgsConstructor
 public class OrderList {
     private int id;
     private String alcoholName;

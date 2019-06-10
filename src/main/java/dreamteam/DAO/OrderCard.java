@@ -1,20 +1,12 @@
 package dreamteam.DAO;
 
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.html.NativeButton;
-import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
-import dreamteam.General.Constans;
-import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.AOrderRepo;
 import dreamteam.Repositories.UserRepo;
 import lombok.Getter;
@@ -24,7 +16,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.text.DecimalFormat;
-import java.util.Collections;
 
 @Getter
 @Setter
@@ -43,13 +34,6 @@ public class OrderCard {
     private HorizontalLayout horizontalLayout;
     private Authentication authentication;
     private String currentPrincipalName;
-
-    @Autowired
-    private UserRepo userRepo;
-    @Autowired
-    private AOrderRepo AOrderRepo;
-
-
 
     public OrderCard(Alcohol alcohol) {
         this.alcohol = alcohol;
@@ -75,7 +59,6 @@ public class OrderCard {
         div.addClassName("alco-details-div");
         div.add(verticalLayoutDiv);
     }
-
 
     private String priceFormat(double price) {
         DecimalFormat df = new DecimalFormat("0.00");

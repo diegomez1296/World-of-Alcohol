@@ -55,7 +55,7 @@ public class RegistrationGUI extends VerticalLayout {
         passwordFieldConfirmPassword = new PasswordField("Confirm Password");
         buttonCreateUser = new Button("Create");
 
-        buttonCreateUser.addClickListener(buttonClickEvent -> createNewUser());
+        buttonCreateUser.addClickListener(buttonClickEvent -> createNewUser(textFieldUserName.getValue(), passwordFieldPassword.getValue(), passwordFieldConfirmPassword.getValue()));
 
         this.add(textUserRegistration);
         this.add(textFieldUserName);
@@ -64,16 +64,16 @@ public class RegistrationGUI extends VerticalLayout {
         this.add(buttonCreateUser);
     }
 
-    private void createNewUser() {
+    private void createNewUser(String name, String password, String conformPassword) {
         boolean isOk = true;
 
-        if(!(textFieldUserName.getValue().length() >0)) isOk = false;
-        if(!(passwordFieldPassword.getValue().length() >0)) isOk = false;
-        if(!(passwordFieldConfirmPassword.getValue().length() >0)) isOk = false;
+        if(!(name.length() >0)) isOk = false;
+        if(!(password.length() >0)) isOk = false;
+        if(!(conformPassword.length() >0)) isOk = false;
 
         if(!isOk) Notification.show("Fields cannot be empty",3000, Notification.Position.TOP_CENTER);
 
-        if(!(passwordFieldPassword.getValue().equals(passwordFieldConfirmPassword.getValue()))) {
+        if(!(password.equals(conformPassword))) {
             isOk = false;
             Notification.show("Passwords must be the same", 3000, Notification.Position.TOP_CENTER);
         }
@@ -84,7 +84,7 @@ public class RegistrationGUI extends VerticalLayout {
             List<User> userList = userRepo.findAll();
             Role userRole = roleRepo.findRoleByRoleName(TypeOfRole.ROLE_USER);
 
-            User newUser = new User(textFieldUserName.getValue(), passwordEncoder.encode(passwordFieldPassword.getValue()));
+            User newUser = new User(name, passwordEncoder.encode(password));
             newUser.setRoles(Collections.singletonList(userRole));
             userList.add(newUser);
 

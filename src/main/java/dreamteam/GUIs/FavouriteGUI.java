@@ -45,14 +45,6 @@ public class FavouriteGUI extends AlcoholGUI {
         }
 
         super.addAlcoholCards(alcoholList);
-
-        initAlcoholCardsListeners(this.getAlcoholCardList());
-
-    }
-
-    private void initAlcoholCardsListeners(List<AlcoholCard> alcoholCardList) {
-
-        //Obsługa listenerow w Favourite GUI
     }
 
 }

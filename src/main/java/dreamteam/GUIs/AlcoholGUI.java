@@ -63,6 +63,4 @@ public abstract class AlcoholGUI extends VerticalLayout{
             this.add(item);
         }
     }
-
-
 }

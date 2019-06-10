@@ -4,8 +4,7 @@ import java.text.DecimalFormat;
 
 public class Constans {
 
-    public static final boolean isLocal = false;
-    //public static String APP_URL; // = "http://127.0.0.1:8080";
+    private static final boolean isLocal = false;
     public static final int AMOUNT_ALCOHOL_IN_ROW = 4;
 
     public static String priceFormat(double price) {

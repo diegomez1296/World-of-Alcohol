@@ -65,7 +65,7 @@ public class MainGUI extends AlcoholGUI {
         List<Favourite> favouriteAlcoList = getFavouriteRepo().findAllByStringUserId(user.getUserId()+"");
 
         for (Favourite item : favouriteAlcoList) {
-            if (alcohol.getId() == item.getAlcohol_id()){
+            if (alcohol.getId().equals(item.getAlcohol_id())){
                 isFavourite = true;
                 dialogText = alcohol.getName() + " is already in your favourites!";
                 initDialog(dialogText);

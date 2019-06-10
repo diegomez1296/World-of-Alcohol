@@ -26,11 +26,6 @@ import static dreamteam.DAO.StaticList.tempList;
 public class OrderGUI extends AlcoholGUI {
     private OrderCard cardDetails;
     private Authentication authentication;
-    private UserRepo userRepo;
-
-    @Autowired
-    private AOrderRepo AOrderRepo;
-
 
     @Autowired
     public OrderGUI(UserRepo userRepo, AlcoholRepo alcoholRepo, FavouriteRepo favouriteRepo, AOrderRepo AOrderRepo) {
@@ -45,15 +40,12 @@ public class OrderGUI extends AlcoholGUI {
 
     }
 
-
     private void createAlcoCard(Long id) {
         Alcohol alcohol =  getAlcoholRepo().findAlcoholById(id);
         cardDetails = new OrderCard(alcohol);
         this.add(cardDetails.getDiv());
 
-        cardDetails.getConfirmButton().addClickListener(btnClickEvent -> {
-            addOrderToDB(id);
-        });
+        cardDetails.getConfirmButton().addClickListener(btnClickEvent -> addOrderToDB(id));
     }
 
     private void addOrderToDB(Long alcoId) {
@@ -62,7 +54,8 @@ public class OrderGUI extends AlcoholGUI {
         User user = getUserRepo().findUserByUsername(currentPrincipalName);
 
         Long userId = user.getUserId();
-        AOrderRepo.save(new AOrder(userId, alcoId, Integer.parseInt(cardDetails.getAmountField().getValue()), false));
+
+        getAOrderRepo().save(new AOrder(userId, alcoId, returnAmountOfAlcohol(cardDetails.getAmountField().getValue()), false));
         initDialog();
     }
 
@@ -77,7 +70,16 @@ public class OrderGUI extends AlcoholGUI {
         dialog.add(cancelButton);
         dialog.open();
     }
-    public void goToUrl(String url) {
+
+    private int returnAmountOfAlcohol(String value) {
+        try {
+            return Integer.parseInt(value);
+        }catch (Exception e) {
+            return 1;
+        }
+
+    }
+    private void goToUrl(String url) {
         UI.getCurrent().getPage().executeJavaScript("window.open(\""+ url + "\", \"_self\");");
     }
 }

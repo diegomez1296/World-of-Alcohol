@@ -32,7 +32,6 @@ public class FavouriteIconComponent {
             favouriteIcon.addClassNames("add-favourite-icon", "icon-disable");
         }
 
-
         favouriteIcon.setVisible(isActive);
         initDialog();
 

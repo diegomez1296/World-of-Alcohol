@@ -43,7 +43,6 @@ public class NavBar{
         }else {
             getUserNavBar();
         }
-
     }
 
     private void getAnonymousUserNavBar(){
@@ -66,7 +65,6 @@ public class NavBar{
         homeIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/"));
         favouriteIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/favourite"));
         orderListIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/orderlist"));
-
     }
 
     private void initNavBar() {
