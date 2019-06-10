@@ -20,6 +20,7 @@ public class RoleRepoTest {
     @Test
     public void createRoleTest() {
         roleRepo.save(new Role(TypeOfRole.ROLE_USER));
+
         Assert.assertNotNull(roleRepo.findRoleByRoleName(TypeOfRole.ROLE_USER));
     }
 }

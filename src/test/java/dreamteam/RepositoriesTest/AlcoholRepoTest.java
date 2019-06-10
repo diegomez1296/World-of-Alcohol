@@ -19,6 +19,7 @@ public class AlcoholRepoTest {
     @Test
     public void createAlcoholTest() {
         alcoholRepo.save(new Alcohol("name", 1, 1.99f,"test", "www.test.com"));
+
         Assert.assertNotNull(alcoholRepo.findAllByName("name"));
     }
 }

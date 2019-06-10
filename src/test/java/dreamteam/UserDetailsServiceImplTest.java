@@ -49,9 +49,5 @@ public class UserDetailsServiceImplTest {
     public void ifNoCorrectUsername_shouldThrowUsernameNotFoundException() {
         String name = "admin";
         User user = (User) userDetailsService.loadUserByUsername(name);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("The user was not found");
-        }
     }
 }

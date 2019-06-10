@@ -20,6 +20,7 @@ public class AOrderRepoTest {
     @Test
     public void createAOrderTest() {
         aOrderRepo.save(new AOrder(4L,2L,5,true));
+
         Assert.assertNotNull(aOrderRepo.findAllByUserId(4L));
     }
 }
