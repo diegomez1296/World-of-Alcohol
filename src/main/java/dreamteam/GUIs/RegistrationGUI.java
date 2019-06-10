@@ -77,6 +77,10 @@ public class RegistrationGUI extends VerticalLayout {
             isOk = false;
             Notification.show("Passwords must be the same", 3000, Notification.Position.TOP_CENTER);
         }
+        if(name.equals(userRepo.findUserByUsername(name))){
+            isOk = false;
+            Notification.show("The user with name:" + name + " already exists", 3000, Notification.Position.TOP_CENTER);
+        }
 
         if(isOk) {
 
