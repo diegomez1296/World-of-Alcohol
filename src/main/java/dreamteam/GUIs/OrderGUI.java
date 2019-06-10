@@ -72,7 +72,7 @@ public class OrderGUI extends AlcoholGUI {
 
         dialog.setWidth("400px");
         dialog.setHeight("130px");
-        NativeButton cancelButton = new NativeButton("check order", event -> goToUrl(Constans.APP_URL+"/orderlist"));
+        NativeButton cancelButton = new NativeButton("check order", event -> goToUrl(Constans.getAPP_URL()+"/orderlist"));
         cancelButton.addClassName("dialog-cancel-btn");
         dialog.add(cancelButton);
         dialog.open();

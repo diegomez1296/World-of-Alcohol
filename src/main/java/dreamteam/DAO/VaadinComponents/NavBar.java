@@ -52,7 +52,7 @@ public class NavBar{
         div.add(horizontalLayout);
         btnDiv.addClassNames("leftside-div","btn-div");
 
-        logInButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/login"));
+        logInButton.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/login"));
         registerButton.addClickListener(event -> registerButton.getUI().ifPresent(ui -> ui.navigate("register")));
     }
 
@@ -62,10 +62,10 @@ public class NavBar{
         btnDiv.add(logOutButton);
         horizontalLayout.add(titleLabel, tooltip, btnDiv);
         div.add(horizontalLayout);
-        logOutButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/logout"));
-        homeIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/"));
-        favouriteIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/favourite"));
-        orderListIcon.addClickListener(event -> goToUrl(Constans.APP_URL+"/orderlist"));
+        logOutButton.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/logout"));
+        homeIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/"));
+        favouriteIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/favourite"));
+        orderListIcon.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/orderlist"));
 
     }
 

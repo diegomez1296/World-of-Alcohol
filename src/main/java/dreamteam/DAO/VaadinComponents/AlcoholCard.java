@@ -42,7 +42,7 @@ public class AlcoholCard {
         verticalLayoutDiv.add(favouriteIconComponent.getFavouriteIcon(),nameLabel,priceLabel,orderButton);
         div.addClassName("div-alco-card");
         div.add(verticalLayoutDiv);
-        orderButton.addClickListener(event -> goToUrl(Constans.APP_URL+"/order"));
+        orderButton.addClickListener(event -> goToUrl(Constans.getAPP_URL()+"/order"));
 
     }
 

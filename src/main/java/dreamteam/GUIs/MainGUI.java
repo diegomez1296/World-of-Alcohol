@@ -53,7 +53,7 @@ public class MainGUI extends AlcoholGUI {
             });
             card.getOrderButton().addClickListener(btnClickEvent -> {
                 tempList.add(card.getAlcohol().getId());
-                getNavBar().goToUrl(Constans.APP_URL+"/order");
+                getNavBar().goToUrl(Constans.getAPP_URL()+"/order");
             });
         }
     }
