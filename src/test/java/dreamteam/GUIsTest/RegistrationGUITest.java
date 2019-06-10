@@ -10,36 +10,31 @@ import dreamteam.Repositories.RoleRepo;
 import dreamteam.Repositories.UserRepo;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashMap;
 
+@RunWith(SpringRunner.class)
 @DataJpaTest
 public class RegistrationGUITest {
-    private String name = "user";
-    private String password = "user";
-    private String conformPassword = "user";
 
-//    @Test
-//    public void isOkIsTrue(String name, String password, String conformPassword){
-//        RegistrationGUI registrationGUI = new RegistrationGUI();
-//
-//
-////        registrationGUI.getTextFieldUserName().setValue("test");
-////        registrationGUI.getPasswordFieldPassword().setValue("test");
-////        registrationGUI.getPasswordFieldConfirmPassword().setValue("test1");
-//
-//        //clickButton(registrationGUI.getButtonCreateUser());
-////        registrationGUI.getButtonCreateUser().addClickListener(e -> {
-////            registrationGUI.getTextFieldUserName().setValue("test");
-////            registrationGUI.getPasswordFieldPassword().setValue("test");
-////            registrationGUI.getPasswordFieldConfirmPassword().setValue("testtt");
-////        });
-//
-//        //registrationGUI.getButtonCreateUser().click();
-//        //Assert.assertEquals(true, registrationGUI.createNewUser(name,password,conformPassword));
-//
-//
-//    }
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private RoleRepo roleRepo;
+    @Autowired
+    private AlcoholRepo alcoholRepo;
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @Test
+    public void createUser(){
+        RegistrationGUI registrationGUI = new RegistrationGUI(userRepo,roleRepo,alcoholRepo, passwordEncoder);
+        registrationGUI.createNewUser("userr", "userr", "userr");
+        Assert.assertEquals(true, registrationGUI.isOk());
+    }
 }

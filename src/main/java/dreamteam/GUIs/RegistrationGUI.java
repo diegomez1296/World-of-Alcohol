@@ -20,10 +20,11 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.persistence.GeneratedValue;
 import java.util.Collections;
 import java.util.List;
 
-@NoArgsConstructor
+@Getter
 @Route("register")
 public class RegistrationGUI extends VerticalLayout {
 
@@ -31,6 +32,7 @@ public class RegistrationGUI extends VerticalLayout {
     private RoleRepo roleRepo;
     private AlcoholRepo alcoholRepo;
     private PasswordEncoder passwordEncoder;
+    private boolean isOk = true;
 
     private Text textUserRegistration;
     private TextField textFieldUserName;
@@ -69,7 +71,7 @@ public class RegistrationGUI extends VerticalLayout {
     }
 
     public void createNewUser(String name, String password, String conformPassword) {
-        boolean isOk = true;
+        isOk = true;
 
         if(!(name.length() >0)) isOk = false;
         if(!(password.length() >0)) isOk = false;
