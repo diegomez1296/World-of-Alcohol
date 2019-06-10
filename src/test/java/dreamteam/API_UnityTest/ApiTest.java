@@ -29,7 +29,7 @@ public class ApiTest {
         userRepo.save(new User("user", passwordEncoder.encode("user")));
 
 
-        String uri = Constans.getAPP_URL()+ "/api/login/user/user";
+        String uri = Constans.getAPP_URL()+"/api/login/user/user";
 
         RestTemplate restTemplate = new RestTemplate();
         Boolean result = restTemplate.getForObject(uri, Boolean.class);
