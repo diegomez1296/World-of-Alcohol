@@ -40,21 +40,19 @@ public class MainGUI extends AlcoholGUI {
 
     private void initAlcoholCardsListeners(List<AlcoholCard> alcoholCardList) {
         for (AlcoholCard card : alcoholCardList) {
-            card.getFavouriteIconComponent().getFavouriteIcon().addClickListener(iconClickEvent -> {
+            card.getFavouriteIconComponent().getFavouriteIcon().addClickListener(iconClickEvent -> favouriteIconListener(card));
+            card.getOrderButton().addClickListener(btnClickEvent -> orderButtonListener(card));
+        }
+    }
 
-                String currentPrincipalName = this.getNavBar().getUserLabel().getText();
+    private void favouriteIconListener(AlcoholCard card) {
+        String currentPrincipalName = this.getNavBar().getUserLabel().getText();
 
-                if(currentPrincipalName.equals("anonymousUser")) {
-                    card.getFavouriteIconComponent().getFavouriteIconDialog().open();
-                }
-                else {
-                    addFavourToDB(card.getAlcohol(), currentPrincipalName);
-                }
-            });
-            card.getOrderButton().addClickListener(btnClickEvent -> {
-                tempList.add(card.getAlcohol().getId());
-                getNavBar().goToUrl(Constans.getAPP_URL()+"/order");
-            });
+        if(currentPrincipalName.equals("anonymousUser")) {
+            card.getFavouriteIconComponent().getFavouriteIconDialog().open();
+        }
+        else {
+            addFavourToDB(card.getAlcohol(), currentPrincipalName);
         }
     }
 

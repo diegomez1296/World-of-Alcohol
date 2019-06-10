@@ -22,7 +22,6 @@ import java.util.List;
 @StyleSheet("frontend://styles/style_MainGUI.css")
 public class FavouriteGUI extends AlcoholGUI {
 
-    private final int AMOUNT_ALCOHOL_IN_ROW = 4;
     private Authentication authentication;
     private String currentPrincipalName;
 
@@ -45,6 +44,14 @@ public class FavouriteGUI extends AlcoholGUI {
         }
 
         super.addAlcoholCards(alcoholList);
+
+        initAlcoholCardsListeners(this.getAlcoholCardList());
+    }
+
+    private void initAlcoholCardsListeners(List<AlcoholCard> alcoholCardList) {
+        for (AlcoholCard card : alcoholCardList) {
+            card.getOrderButton().addClickListener(btnClickEvent -> orderButtonListener(card));
+        }
     }
 
 }

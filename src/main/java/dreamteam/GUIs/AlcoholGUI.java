@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+import static dreamteam.DAO.StaticList.tempList;
+
 @Getter
 @Setter
 public abstract class AlcoholGUI extends VerticalLayout{
@@ -62,5 +64,10 @@ public abstract class AlcoholGUI extends VerticalLayout{
         for (HorizontalLayout item: horizontalLayoutList) {
             this.add(item);
         }
+    }
+
+    public void orderButtonListener(AlcoholCard card) {
+        tempList.add(card.getAlcohol().getId());
+        getNavBar().goToUrl(Constans.getAPP_URL()+"/order");
     }
 }
