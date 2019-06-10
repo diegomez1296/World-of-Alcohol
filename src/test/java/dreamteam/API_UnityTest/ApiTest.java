@@ -1,6 +1,7 @@
 package dreamteam.API_UnityTest;
 
 import dreamteam.DAO.User;
+import dreamteam.General.Constans;
 import dreamteam.Repositories.UserRepo;
 import org.junit.Assert;
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class ApiTest {
         userRepo.save(new User("user", passwordEncoder.encode("user")));
 
 
-        String uri = "http://localhost:8080/api/login/user/user";
+        String uri = Constans.getAPP_URL()+ "/api/login/user/user";
 
         RestTemplate restTemplate = new RestTemplate();
         Boolean result = restTemplate.getForObject(uri, Boolean.class);
