@@ -14,12 +14,16 @@ import dreamteam.DAO.User;
 import dreamteam.Repositories.AlcoholRepo;
 import dreamteam.Repositories.RoleRepo;
 import dreamteam.Repositories.UserRepo;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Collections;
 import java.util.List;
 
+@NoArgsConstructor
 @Route("register")
 public class RegistrationGUI extends VerticalLayout {
 
@@ -64,7 +68,7 @@ public class RegistrationGUI extends VerticalLayout {
         this.add(buttonCreateUser);
     }
 
-    private void createNewUser(String name, String password, String conformPassword) {
+    public void createNewUser(String name, String password, String conformPassword) {
         boolean isOk = true;
 
         if(!(name.length() >0)) isOk = false;
