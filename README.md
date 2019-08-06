@@ -2,6 +2,7 @@
 
 ### General:
 Academic project - Prototype of alcoholic online store.
+[Mobile app for World of Alcohol(Unity3D)](https://github.com/diegomez1296/WOA_UnityApp)
 
 ### Technology stack:
 - JAVA 8
